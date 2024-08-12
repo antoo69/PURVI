@@ -241,7 +241,7 @@ async def song_download_cb(client, CallbackQuery, _):
     stype, format_id, vidid = callback_request.split("|")
     mystic = await CallbackQuery.edit_message_text(_["song_8"])
     yturl = f"https://www.youtube.com/watch?v={vidid}"
-    with yt_dlp.YoutubeDL({"quiet": True}) as ytdl:
+    with yt_dlp.YoutubeDL({"cookiefile": "cookies.txt","quiet": True}) as ytdl:
         x = ytdl.extract_info(yturl, download=False)
     title = (x["title"]).title()
     title = re.sub("\W+", " ", title)
