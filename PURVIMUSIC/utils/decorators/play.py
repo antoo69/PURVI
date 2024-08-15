@@ -45,17 +45,20 @@ def PlayWrapper(command):
             )
             return await message.reply_text(_["general_3"], reply_markup=upl)
               
-              if MUST_JOIN:
-                try:
-                await app.get_chat_member(MUST_JOIN, message.from_user.id)
-            except UserNotParticipant:
-                sub = await app.export_chat_invite_link(MUST_JOIN)
-                kontol = InlineKeyboardMarkup(
-                    [
-                        [InlineKeyboardButton("📑 Gabung Dulu", url=sub)]
-                    ]
-                )
-                return await message.reply_text(_["force_sub"].format(message.from_user.mention), reply_markup=kontol)
+              try:
+    if MUST_JOIN:
+        await app.get_chat_member(MUST_JOIN, message.from_user.id)
+except UserNotParticipant:
+    sub = await app.export_chat_invite_link(MUST_JOIN)
+    kontol = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("✯ Gabung Dulu", url=sub)
+            ],
+        ]
+    )
+    return await message.reply_text(_["force_sub"].format(message.from_user.mention), reply_markup=kontol)
+
 
 
         if await is_maintenance() is False:
