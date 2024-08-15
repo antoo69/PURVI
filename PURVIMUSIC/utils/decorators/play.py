@@ -21,7 +21,8 @@ from PURVIMUSIC.utils.database import (
     is_maintenance,
 )
 from PURVIMUSIC.utils.inline import botplaylist_markup
-from config import PLAYLIST_IMG_URL, SUPPORT_CHAT, adminlist, MUST JOIN
+from config import PLAYLIST_IMG_URL, SUPPORT_CHAT, adminlist
+from config import PLAYLIST_IMG_URL, PRIVATE_BOT_MODE, MUST_JOIN
 from strings import get_string
 
 links = {}
